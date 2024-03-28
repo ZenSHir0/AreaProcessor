@@ -32,6 +32,7 @@ public static class GeometryProcessing
             throw new ArgumentException("One or more sides of a triangle are equal to or less than zero");
 
         double[] sides = [a, b, c];
+        Array.Sort(sides);
         return Math.Pow(sides[2], 2) == Math.Pow(sides[1], 2) + Math.Pow(sides[0], 2);
     }
 }
