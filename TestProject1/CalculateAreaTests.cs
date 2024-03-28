@@ -81,8 +81,8 @@ public class CalculateAreaTests
 
     [TestMethod]
     [DataRow(3, 4, 5)]
-    [DataRow(5, 12, 13)]
-    [DataRow(7, 24, 25)]
+    [DataRow(12, 13, 5)]
+    [DataRow(25, 7, 24)]
     public void IsTriangleRight_ValidSideValues_ReturnTrue(double value1, double value2, double value3)
     {
         var actual = GeometryProcessing.IsTriangleRight(value1, value2, value3);
