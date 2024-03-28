@@ -35,4 +35,20 @@ public static class GeometryProcessing
         Array.Sort(sides);
         return Math.Pow(sides[2], 2) == Math.Pow(sides[1], 2) + Math.Pow(sides[0], 2);
     }
+
+    public static double CalculateArea(params double[] sides)
+    {
+        if (sides.Length == 1)
+        {
+            return CircleArea(sides[0]);
+        }
+        else if (sides.Length == 3)
+        {
+            return TriangleArea(sides[0], sides[1], sides[2]);
+        }
+        else
+        {
+            throw new ArgumentException("Unsupported number of parameters");
+        }
+    }
 }

@@ -99,4 +99,43 @@ public class CalculateAreaTests
     {
         GeometryProcessing.IsTriangleRight(value1, value2, value3);
     }
+
+    [TestMethod]
+    [DataRow(1)]
+    [DataRow(3.1)]
+    [DataRow(99)]
+    public void CalculateArea_CircleArea_ReturnCorrectCircleArea(double value)
+    {
+        double radius = value;
+
+        var excepted = GeometryProcessing.CircleArea(radius);
+
+        var actual = GeometryProcessing.CalculateArea(radius);
+
+        Assert.AreEqual(excepted, actual);
+    }
+
+    [TestMethod]
+    [DataRow(new double[] { 1, 2, 2 })]
+    [DataRow(new double[] { 11.2, 6, 10 })]
+    [DataRow(new double[] { 59.2, 56, 60 })]
+    public void CalculateArea_TriangleArea_ReturnCorrectTriangleArea(double[] parameters)
+    {
+        var excepted = GeometryProcessing.TriangleArea(parameters[0],
+            parameters[1], parameters[2]);
+
+        var actual = GeometryProcessing.CalculateArea(parameters);
+
+        Assert.AreEqual(excepted, actual);
+    }
+
+    [TestMethod]
+    [DataRow(new double[] { 1, 2 })]
+    [DataRow(new double[] { 1, 2, 3, 4 })]
+    [DataRow(new double[] { })]
+    [ExpectedException(typeof(ArgumentException))]
+    public void CalculateArea_UnsupportedNumbersOfParams_ReturnArgumentException(double[] parameters)
+    {
+        GeometryProcessing.CalculateArea(parameters);
+    }
 }
